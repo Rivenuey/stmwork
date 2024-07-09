@@ -1,0 +1,137 @@
+<!--pages/HW1/HW1.wxml-->
+<!-- <text>pages/HW1/HW1.wxml</text> -->
+<view class="container">
+  <view class="head_box">
+    <image src="/images/HW.png" mode="" />
+    <view>{{title}}</view>
+  </view>
+  <view class="weather_box">
+    <view class="welcome_text">
+      {{welcome}}
+
+    </view>
+    <view class="section">
+      <text class="label">当前时间:</text>
+      <text class="value">{{currentTime}}</text>
+    </view>
+    <view class="flex">
+      <view class="w50">
+        <!-- 天气图 -->
+        <image wx:if="{{weatherText==='雷'}}" src="/images/天气-雷暴.png" style="width: 250rpx; margin-top: 0rpx;margin-left: 40rpx;" mode="widthFix" />
+
+        <image wx:if="{{weatherText==='多云'}}" src="/images/天气-多云.png" style="width: 250rpx; margin-top: 0rpx;margin-left: 40rpx;" mode="widthFix" />
+
+        <image wx:if="{{weatherText==='晴'}}" src="/images/天气-晴.png" style="width: 250rpx; margin-top: 0rpx;margin-left: 40rpx;" mode="widthFix" />
+
+        <image wx:if="{{weatherText==='暴雨'}}" src="/images/天气-暴雨.png" style="width: 250rpx; margin-top: 0rpx;margin-left: 40rpx;" mode="widthFix" />
+
+        <image wx:if="{{weatherText==='雪'}}" src="/images/天气-雪.png" style="width: 250rpx; margin-top: 0rpx;margin-left: 40rpx;" mode="widthFix" />
+
+
+        <image wx:if="{{weatherText==='雨'}}" src="/images/天气-暴雨.png" style="width: 250rpx; margin-top: 0rpx;margin-left: 40rpx;" mode="widthFix" />
+
+        <image wx:if="{{weatherText==='阴'}}" src="/images/天气-多云.png" style="width: 250rpx; margin-top: 0rpx;margin-left: 40rpx;" mode="widthFix" />
+      </view>
+      <view>
+
+        <view class="location_text">
+          <image src="/images/定位.png" style="width: 20rpx; margin-top: 10rpx;" mode="widthFix" /><text style="font-size: 24rpx; line-height: 24rpx; margin-left: 10rpx;">{{location}}</text>
+        </view>
+        <view class="temperature_text">
+          {{temperature}}°C
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="mqtt_box" bind:tap="openDialog">
+
+
+
+    <view>
+      <van-icon wx:if="{{!mqttContontDialog}}" name="arrow-down" />
+      <van-icon wx:if="{{mqttContontDialog}}" name="arrow-up" />
+      MQTT服务器
+    </view>
+    <view style="color:{{isConnect?'RGB(0,176,80)':'RGB(192,0,0)'}}">
+      {{isConnect?'已连接':'未连接'}}
+    </view>
+
+  </view>
+
+  <!-- mqtt传感器 -->
+  <view class="sensors-system-title">
+    传感器设备
+  </view>
+  <view class="sensors-system">
+    <View wx:for="{{sensorList}}" class="system-info">
+      <view class="sensors-system-box1">
+        <image src="{{item.img}}" style="height: 80rpx;" mode="heightFix" />
+
+      </view>
+      <view class="sensors-system-box2">
+        <view>{{item.parameter}}</view>
+        <view>{{item.value}}{{item.unit}} </view>
+        <view>{{item.name}}</view>
+      </view>
+      <view class="sensors-system-box3">! </view>
+    </View>
+  </view>
+  
+<!-- 红温提示您 -->
+<view class="sensors-system-title">
+    红温提示您
+  </view>
+  <view id="fire-alert">
+    {{fireAlert}}
+  </view>
+
+</view>
+
+<van-popup show="{{mqttContontDialog}}" bind:close="onClose" round custom-style="height: 65%;" position="bottom" bind:close="onClose">
+  <view>
+    <van-cell-group>
+      <van-field label="address" model:value="{{ address }}" placeholder="请输入用户名" border="{{ false }}" />
+    </van-cell-group>
+
+    <van-cell-group>
+      <van-field label="port" model:value="{{ port }}" />
+    </van-cell-group>
+
+    <van-cell-group>
+      <van-field label="username" model:value="{{ username}}" />
+    </van-cell-group>
+
+    <van-cell-group>
+      <van-field label="password" type="password" model:value="{{ password }}" />
+    </van-cell-group>
+    <view class="btn_style">
+      <van-button color="{{isConnect?'#d9d9d9':'#96baff'}} "size="small" bindtap="connectMqtt">连接</van-button>
+      <van-button color="{{isConnect?'#96baff':'#d9d9d9'}}"size="small">断开</van-button>
+    </view>
+    <van-cell-group>
+      <view class="subscribe_text">
+        订阅
+      </view>
+      <van-field label="网址" model:value="{{push}}" placeholder="请输入订阅地址" border="{{ false }}" />
+
+      <view class="btn_style">
+        <van-button color="{{isPush?'#d9d9d9':'#96baff'}}"size="small" bindtap="addPush">订阅</van-button>
+        <van-button color="{{isPush?'#96baff':'#d9d9d9'}}" size="small">取消</van-button>
+      </view>
+
+    </van-cell-group>
+    <view class="subscribe_text">
+      发布
+    </view>
+    <van-cell-group>
+      <van-field placeholder="请输入发布地址" model:value="{{ subscr }}" />
+      <view class="btn_style">
+        <van-button color="{{isPush?'#d9d9d9':'#96baff'}}"  size="small" bindtap="addSubscr">确认</van-button>
+        <van-button color="{{isPush?'#96baff':'#d9d9d9'}}"  size="small">修改</van-button>
+      </view>
+    </van-cell-group>
+
+  </view>
+
+</van-popup>

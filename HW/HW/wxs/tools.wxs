@@ -1,0 +1,16 @@
+function strIndexOf(weatherText,text){
+  console.log(111);
+
+  console.log(weatherText,text);
+  if(weatherText){
+    console.log(weatherText,text);
+    if(weatherText.IndexOf(text)!==-1){
+      return true;
+    } else {
+      return false;
+    }
+    }
+}
+module.exports = {
+  strIndexOf: strIndexOf,
+};

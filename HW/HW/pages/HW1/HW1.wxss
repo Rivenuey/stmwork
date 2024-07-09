@@ -1,0 +1,123 @@
+/* pages/HW1/HW1.wxss */
+.head_box{
+  display: flex;
+  /* justify-content: center; */
+  padding-top: 10rpx;
+}
+.head_box >image{
+  margin-left: 10rpx;
+  width: 150rpx;
+  height: 150rpx;
+}
+.head_box >view{
+  margin-left:15rpx;
+  font-size: 38rpx;
+  font-weight: 600;
+  line-height: 100rpx;
+}
+.weather_box{
+  height: 320rpx;
+  margin: 32rpx 32rpx 0;
+  box-shadow: 0 8rpx 20rpx  rgba(0 ,0 ,0.3);
+  border-radius: 32rpx;
+}
+.welcome_text{
+  margin-top: 20rpx;
+  font-size: 30rpx;
+  text-align: center;
+  color: blue;
+}
+.w50{
+  width: 50%;
+}
+.location_text{
+  margin-top: 60rpx;
+}
+.temperature_text{
+  margin-top: 12rpx;
+  font-size: 80rpx;
+}
+.mqtt_box{
+  display: flex;
+  justify-content: space-between;
+  height: 120rpx;
+  padding: 0 20rpx;
+  margin: 32rpx 32rpx 0;
+  box-shadow: 0 8rpx 20rpx  rgba(0 ,0 ,0.3);
+  border-radius: 32rpx;
+  font-size:40rpx ;
+  line-height: 120rpx;
+}
+.btn_style{
+  /* background-color: red; */
+  margin: 30rpx 0;
+  display: flex;
+  justify-content: space-around;
+}
+.van-button,
+.van-button--default,
+.van-button--small{
+  width: 250rpx;
+}
+.ubscribe_text{
+  margin-left: 32rpx;
+
+}
+.section{
+  color:blue;
+}
+.sensors-system-title{
+  margin: 32rpx 0 32rpx 34rpx;
+}
+/* 红温提示您 */
+#fire-alert {
+  color: red;
+  font-weight: bold;
+}
+
+#gas-alert {
+  color: red;
+  font-weight: bold;
+}
+
+
+
+.sensors-system{
+  margin: 0 0 32rpx 34rpx;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.system-info{
+  display: flex;
+  width: 330rpx;
+  height: 205rpx;
+  box-shadow: 0 8rpx 20rpx  rgba(0 ,0 ,0.3);
+  background-color:#ffffff ;
+  border-radius: 32rpx;
+  margin: 0 23rpx 23rpx 0;
+}
+.sensors-system-box1{
+  margin-right: 15rpx;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 80rpx;
+}
+.sensors-system-box2 >view{
+  margin-top:19rpx ;
+  width: 200rpx;
+}
+.sensors-system-box3{
+  color: red;
+  font-size: 65rpx;
+  font-weight: 600;
+  line-height: 205rpx;
+}
+#fire-alert, #gas-alert {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  font-size: 36rpx;
+  margin-top: 20rpx;
+}

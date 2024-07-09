@@ -1,0 +1,30 @@
+{
+  "pages": [
+    "pages/HW1/HW1"
+  ],
+  
+  "window": {
+    "navigationBarTitleText": "红温",
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#ffffff",
+    "enablePullDownRefresh":true
+  },
+  "sitemapLocation":"sitemap.json",
+  "usingComponents": {
+    "van-icon":"@vant/weapp/icon/index",
+    "van-popup":"@vant/weapp/popup/index",
+    "van-field":"@vant/weapp/field/index",
+    "van-button":"@vant/weapp/button/index",
+    "van-progress":"@vant/weapp/progress/index"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息用于小程序天气的效果展示"
+    },
+    "requiredPrivateInfos": [
+      "getLocation"
+    ]
+  }
+
+
+}
